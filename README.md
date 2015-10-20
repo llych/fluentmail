@@ -114,7 +114,23 @@ mail.credentials('you@gmail.com', 'pwd')\
     .attach('description.txt', 'utf-8')\ # Charset is optional, and only for Text files.
     .send()
 ```
+```python
+2015-10-20 修改发送图片显示
 
+from fluentmail import *
+
+mail = FluentMail('smtp.gmail.com', 587, TLS)
+
+mail.credentials('you@gmail.com', 'pwd')\
+    .from_address('you@gmail.com')\
+    .to('other@gmail.com')\
+    .subject('FluentMail')\
+    .body(u'<h2>Hi, I\'m FluentMail.<h2> <br><img src="cid:photo.png" border="1"><br>', 'utf-8')\ # Body charset is optional.
+    .as_html()\
+    .attach('photo.png')\
+    .send()
+
+```
 ### Being more Pythonic
 
 ```python
