@@ -91,6 +91,7 @@ class FluentMail:
             elif maintype == 'image':
                 with open(filename, 'rb') as f:
                     mime = MIMEImage(f.read(), _subtype=subtype)
+                    mime.add_header('Content-ID', filename)
             elif maintype == 'audio':
                 with open(filename, 'rb') as f:
                     mime = MIMEAudio(f.read(), _subtype=subtype)
